@@ -1,16 +1,20 @@
 import React from 'react';
 import CurrencyExchange from '../../components/CurrencyExchange/CurrencyExchange';
-import { CurrencyState, CurrencyType } from '../../redux/currencyReducer';
-import { Dispatch } from 'redux';
+import {CurrencyState, CurrencyType} from '../../redux/currencyReducer';
+import {Dispatch} from 'redux';
 import {
     ChangeActionAC,
     ChangeCurrencyFieldAC,
     СhangeCurrentCurrencyAC,
     CurrencyReducersTypes
 } from '../../redux/actions';
-import { connect, ConnectedProps } from 'react-redux';
+import {connect, ConnectedProps, useDispatch, useSelector} from 'react-redux';
+import {IGlobalState} from '../../redux/state';
 
 const CurrencyEContainer: React.FC<TProps> = props => {
+
+    const dispatch = useDispatch()
+    const state = useSelector<IGlobalState>(state => state.currency)
 
     const {
         currencies,
@@ -76,7 +80,7 @@ const CurrencyEContainer: React.FC<TProps> = props => {
     );
 };
 
-const mapStateToProps = ( { currency } : {currency: CurrencyState} ): CurrencyState => {
+const mapStateToProps = ({currency}: { currency: CurrencyState }): CurrencyState => {
     return {
         currencies: currency.currencies,
         currentCurrency: currency.currentCurrency,
@@ -86,8 +90,8 @@ const mapStateToProps = ( { currency } : {currency: CurrencyState} ): CurrencySt
     };
 };
 
-// @ts-ignore
-const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : any => {
+
+const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>): any => {
     return {
         setCurrencyAmount(amountOfBYN: string, amountOfCurrency: string) {
             dispatch(ChangeCurrencyFieldAC(amountOfBYN, amountOfCurrency));
@@ -101,7 +105,7 @@ const mapDispatchToProps = (dispatch: Dispatch<CurrencyReducersTypes>) : any => 
     };
 };
 
-// @ts-ignore
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type TProps = ConnectedProps<typeof connector>;

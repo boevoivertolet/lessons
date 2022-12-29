@@ -54,6 +54,25 @@ const counter2 = makeCounter();
 // reset: установить счетчик в 0;
 // set: установить счетчик в заданное значение;
 
+function makeCounterTask3(a: number) {
+    return {
+        increase() {
+            return a + 1
+        },
+        decrease() {
+            return a - 1
+        },
+        reset() {
+            return a = 0
+        },
+        set() {
+            return a
+        }
+
+    }
+}
+
+
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
 // и что бы корректно работали следующие вызовы:

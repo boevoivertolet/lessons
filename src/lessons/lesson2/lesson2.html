@@ -22,6 +22,25 @@
     const counter = makeCounter();
     const counter2 = makeCounter();
 
+    //task 3
+
+    function makeCounterTask3(a) {
+        return {
+            increase() {
+                return a + 1
+            },
+            decrease() {
+                return a - 1
+            },
+            reset() {
+                return a = 0
+            },
+            set() {
+                return a
+            }
+        }
+    }
+
 
 
 

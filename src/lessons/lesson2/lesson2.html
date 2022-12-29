@@ -5,10 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<script !src="">
+<script>
+    // task 1
     const sum = (a) => (b) => {
         return a + b
     }
+
+    // task 2
+
+    function makeCounter() {
+        let count =  1
+        return () => {
+            return count++
+        }
+    }
+    const counter = makeCounter();
+    const counter2 = makeCounter();
+
+
 
 
 </script>
